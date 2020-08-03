@@ -47,5 +47,12 @@ public class ZipCode {
         this.submittedAt = submittedAt;
     }
 
+    public ZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public ZipCode() {
+    }
+
     
 }
