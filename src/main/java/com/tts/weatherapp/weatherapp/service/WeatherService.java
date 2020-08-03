@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.tts.weatherapp.weatherapp.model.Response;
 import com.tts.weatherapp.weatherapp.model.ZipCode;
-import com.tts.weatherapp.weatherapp.repository.RequestRepository;
 import com.tts.weatherapp.weatherapp.repository.ZipRepository;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -19,9 +18,6 @@ public class WeatherService {
     
     @Value("${api_key}")
     private String apiKey;
-
-    @Autowired
-    RequestRepository requestRepository;
 
     @Autowired
     private ZipRepository zipRepository;

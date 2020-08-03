@@ -21,7 +21,6 @@ public class WeatherController {
 	
 	@GetMapping
 	public String getIndex(Model model) {
-		model.addAttribute("request", new Request()); 
 		List<ZipCode> zipCodeList = weatherService.getRecentSearches();
 		model.addAttribute("request", new Request());
 		model.addAttribute("zip_codes", zipCodeList);
