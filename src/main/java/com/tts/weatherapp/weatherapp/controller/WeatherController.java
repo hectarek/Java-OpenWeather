@@ -1,7 +1,10 @@
 package com.tts.weatherapp.weatherapp.controller;
 
+import java.util.List;
+
 import com.tts.weatherapp.weatherapp.model.Request;
 import com.tts.weatherapp.weatherapp.model.Response;
+import com.tts.weatherapp.weatherapp.model.ZipCode;
 import com.tts.weatherapp.weatherapp.service.WeatherService;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,13 +22,18 @@ public class WeatherController {
 	@GetMapping
 	public String getIndex(Model model) {
 		model.addAttribute("request", new Request()); 
+		List<ZipCode> zipCodeList = weatherService.getRecentSearches();
+		model.addAttribute("request", new Request());
+		model.addAttribute("zip_codes", zipCodeList);
 		return "index"; 
 	}
 	
 	@PostMapping
 	public String PostIndex(Request request, Model model) {
+		List<ZipCode> zipCodeList = weatherService.getRecentSearches();
 		Response data = weatherService.getForecast(request.getZipCode()); 
 		model.addAttribute("data", data); 
+		model.addAttribute("zip_codes", zipCodeList);
 		return "index"; 
 	}
 
